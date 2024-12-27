@@ -1,0 +1,23 @@
+
+/* 消息提示的样式 */
+.custom-msg {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: green;
+    padding: 15px 25px;
+    border-radius: 5px;
+    font-size: 14px;
+    z-index: 9999;
+    /*animation: fade-in-out 3s ease forwards;*/
+}
+
+/* 动画效果 */
+@keyframes fade-in-out {
+    0% { opacity: 0; transform: translate(-50%, -60%); }
+    10% { opacity: 1; transform: translate(-50%, -50%); }
+    90% { opacity: 1; transform: translate(-50%, -50%); }
+    100% { opacity: 0; transform: translate(-50%, -40%); }
+}

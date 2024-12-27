@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>工具页面</title>
+    <link rel="stylesheet" th:href="@{/css/common.css}" />
+    <link rel="stylesheet" th:href="@{/css/tools.css}" />
+    <script th:src="@{/js/common.js}"></script>
+    <script th:src="@{/js/jquery-3.6.0.min.js}"></script>
+    <script th:src="@{/js/tools.js}"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="op">
+            <button class="op-button">JSON校验</button>
+            <button class="op-button">Base64</button>
+            <button class="op-button">Unicode转码</button>
+        </div>
+        <label for="in"></label><textarea placeholder="请输入内容" id="in" name="data"></textarea>
+        <div class="func">
+            <button onclick="execute()">提交</button>
+            <button>粘贴</button>
+            <button>全选</button>
+            <button>反选</button>
+        </div>
+    </div>
+<script>
+    //启动欢迎
+    msg('欢迎~~', 1000);
+</script>
+</body>
+</html>

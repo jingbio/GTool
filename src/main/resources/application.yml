@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: GTool
+server:
+  port: 5010

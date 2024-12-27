@@ -1,0 +1,74 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden; /* 防止滚动 */
+}
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 98%;
+}
+textarea {
+    width: 98%;
+    height: 83vh;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    resize: vertical;
+    white-space: nowrap;
+    overflow-x: auto;
+}
+.func {
+    display: flex;
+    justify-content: flex-end;
+}
+.func button {
+    padding: 5px 10px;
+    margin-right: 5px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.func button:hover {
+    background-color: #0056b3;
+}
+.func button:last-child {
+    margin-right: 0;
+}
+
+.op {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 5px;
+}
+
+.op-button {
+    padding: 5px 10px;
+    margin-right: 5px;
+    border: none;
+    background-color: green;
+    color: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.op-button:hover {
+    background-color: limegreen;
+}
+
+.op-button.selected {
+    background-color: grey; /* 选中状态的颜色 */
+}
