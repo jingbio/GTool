@@ -1,3 +1,9 @@
+// 页面加载完成时执行
+window.onload = function () {
+    //启用欢迎
+    msg('欢迎~~', 1000);
+}
+
 //监听工具栏按钮事件
 document.addEventListener('DOMContentLoaded', function() {
     const buttons = document.querySelectorAll('.op-button');
@@ -18,10 +24,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-function execute (){
+function execute (op){
     const textarea = document.getElementById('in');
     const route = document.querySelector('.selected');
-    const op = document.getElementById("op");
     let formData = {
         route: route.value,
         op:op.value,
@@ -34,7 +39,8 @@ function execute (){
         contentType: 'application/json',
         success: function(response) {
             if (response.code === 200) {
-                msg('成功调用', 0)
+                msg(response.msg, 3000);
+                textarea.value=response.data;
             } else {
                 msg(response.msg, 0)
             }
@@ -44,3 +50,4 @@ function execute (){
         }
     });
 }
+

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>工具页面</title>
+    <title>GTool</title>
     <link rel="stylesheet" th:href="@{/css/common.css}" />
     <link rel="stylesheet" th:href="@{/css/tools.css}" />
     <script th:src="@{/js/common.js}"></script>
@@ -12,26 +12,12 @@
 <body>
     <div class="container">
         <div class="op">
-            <button class="op-button" value="JSON">JSON校验</button>
-            <button class="op-button" value="BASE64">Base64</button>
-            <button class="op-button" value="UNICODE">Unicode转码</button>
+            <button class="op-button" th:each="op : ${ops}" th:text="${op.name}" th:value="${op.value}"/>
         </div>
         <label for="in"></label><textarea placeholder="请输入内容" id="in" name="data"></textarea>
         <div class="func">
-            <label for="op"></label>
-            <select id="op">
-                <option value=0>加密</option>
-                <option value=1>解密</option>
-            </select>
-            <button onclick="execute()">提交</button>
-            <button>粘贴</button>
-            <button>全选</button>
-            <button>反选</button>
+            <button th:each="func : ${funcs}" th:text="${func.name}" th:value="${func.op}" onclick="execute(this)"/>
         </div>
     </div>
-<script>
-    //启动欢迎
-    msg('欢迎~~', 1000);
-</script>
 </body>
 </html>

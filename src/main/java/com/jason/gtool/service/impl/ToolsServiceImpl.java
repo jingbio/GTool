@@ -2,6 +2,7 @@ package com.jason.gtool.service.impl;
 
 import com.jason.gtool.domain.req.GDoPram;
 import com.jason.gtool.service.IToolsService;
+import com.jason.gtool.utils.Result;
 import org.springframework.stereotype.Service;
 
 /**
@@ -13,7 +14,7 @@ import org.springframework.stereotype.Service;
 public class ToolsServiceImpl implements IToolsService {
 
     @Override
-    public String route(GDoPram param) {
+    public Result route(GDoPram param) {
         return param.getRoute().getStrategy().execute(param.getOp(), param.getData());
     }
 }

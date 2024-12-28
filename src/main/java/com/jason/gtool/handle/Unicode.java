@@ -2,6 +2,7 @@ package com.jason.gtool.handle;
 
 import cn.hutool.core.text.UnicodeUtil;
 import com.jason.gtool.domain.IStrategy;
+import com.jason.gtool.utils.Result;
 
 /**
  * @author JingWei Guo
@@ -9,13 +10,17 @@ import com.jason.gtool.domain.IStrategy;
  * @desciption:
  */
 public class Unicode implements IStrategy {
-    @Override
+
     public String encrypt(String data) {
         return UnicodeUtil.toUnicode(data);
     }
 
-    @Override
     public String decrypt(String data) {
         return UnicodeUtil.toString(data);
+    }
+
+    @Override
+    public Result execute(Integer op, String data) {
+        return null;
     }
 }

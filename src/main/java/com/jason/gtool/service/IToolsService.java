@@ -1,6 +1,7 @@
 package com.jason.gtool.service;
 
 import com.jason.gtool.domain.req.GDoPram;
+import com.jason.gtool.utils.Result;
 
 /**
  * @author JingWei Guo
@@ -8,5 +9,5 @@ import com.jason.gtool.domain.req.GDoPram;
  * @desciption:
  */
 public interface IToolsService {
-    String route(GDoPram param);
+    Result route(GDoPram param);
 }

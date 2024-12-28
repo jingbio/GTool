@@ -2,6 +2,7 @@ package com.jason.gtool.controller;
 
 import com.jason.gtool.domain.req.GDoPram;
 import com.jason.gtool.service.IToolsService;
+import com.jason.gtool.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,7 +21,7 @@ public class ToolsController {
     @Autowired
     IToolsService toolsService;
     @PostMapping("/execute")
-    public String execute(@RequestBody GDoPram param){
+    public Result execute(@RequestBody GDoPram param){
         return this.toolsService.route(param);
     }
 }

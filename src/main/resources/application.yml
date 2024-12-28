@@ -1,5 +1,7 @@
 spring:
   application:
     name: GTool
+  thymeleaf:
+    cache: false
 server:
   port: 5010
