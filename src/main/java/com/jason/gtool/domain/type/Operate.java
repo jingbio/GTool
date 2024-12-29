@@ -6,6 +6,12 @@ package com.jason.gtool.domain.type;
  * @desciption:
  */
 public enum Operate {
+    // 加密
     ENCRYPT,
-    DECRYPT;
+    // 解密
+    DECRYPT,
+    // 格式化
+    FORMAT,
+    // 压缩
+    DENSITY;
 }

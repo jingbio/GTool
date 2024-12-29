@@ -1,11 +1,12 @@
 package com.jason.gtool.controller;
 
 import com.jason.gtool.domain.type.RouteEnum;
-import com.jason.gtool.domain.vo.Funcs;
-import com.jason.gtool.domain.vo.Ops;
+import com.jason.gtool.domain.vo.Op;
+import com.jason.gtool.domain.vo.Route;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.PostConstruct;
 import java.util.Arrays;
@@ -19,24 +20,18 @@ import java.util.List;
 @Controller
 public class IndexController {
     @PostConstruct
-    private List<Ops> ops(){
+    private List<Route> routes(){
         return Arrays.asList(
-            new Ops("JSON校验", RouteEnum.JSON),
-            new Ops("Base64", RouteEnum.BASE64),
-            new Ops("Unicode转码",RouteEnum.UNICODE)
-        );
-    }
-    private List<Funcs> funcs() {
-        return Arrays.asList(
-            new Funcs("格式化JSON", 0),
-            new Funcs("压缩JSON", 1)
+            new Route("JSON校验", RouteEnum.JSON),
+            new Route("Base64", RouteEnum.BASE64),
+            new Route("Unicode转码",RouteEnum.UNICODE)
         );
     }
 
     @GetMapping("/")
     public String index(Model model) {
-        model.addAttribute("ops", this.ops());
-        model.addAttribute("funcs", this.funcs());
+        model.addAttribute("routes", this.routes());
+        model.addAttribute("ops", Op.getOpsByRoute(null));
         return "tools";
     }
 }

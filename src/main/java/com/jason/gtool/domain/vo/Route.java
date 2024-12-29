@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Ops {
+public class Route {
     private String name;
     private RouteEnum value;
 }

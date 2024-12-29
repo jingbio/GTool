@@ -1,6 +1,7 @@
 package com.jason.gtool.handle;
 
 import com.jason.gtool.domain.IStrategy;
+import com.jason.gtool.domain.type.Operate;
 import com.jason.gtool.utils.Result;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,7 +26,13 @@ public class Base64 implements IStrategy {
     }
 
     @Override
-    public Result execute(Integer op, String data) {
-        return null;
+    public Result execute(Operate op, String data) {
+        if (Operate.DECRYPT ==op) {
+            return this.decrypt(data);
+        } else if (Operate.ENCRYPT==op){
+            return this.encrypt(data);
+        }else {
+            return null;
+        }
     }
 }

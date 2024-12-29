@@ -14,8 +14,6 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class GDoPram {
+public class RoutePram {
     private RouteEnum route;
-    private Operate op;
-    private String data;
 }

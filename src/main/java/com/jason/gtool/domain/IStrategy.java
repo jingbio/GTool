@@ -1,5 +1,6 @@
 package com.jason.gtool.domain;
 
+import com.jason.gtool.domain.type.Operate;
 import com.jason.gtool.utils.Result;
 
 /**
@@ -14,5 +15,5 @@ public interface IStrategy {
      * @param data
      * @return
      */
-     Result execute(Integer op, String data);
+     Result execute(Operate op, String data);
 }

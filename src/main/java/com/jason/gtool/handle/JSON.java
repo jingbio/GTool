@@ -31,10 +31,10 @@ public class JSON implements IStrategy {
     }
 
     @Override
-    public Result execute(Integer op, String data) {
-        if (Operate.DECRYPT.ordinal() ==op) {
+    public Result execute(Operate op, String data) {
+        if (Operate.FORMAT ==op) {
             return this.format(data);
-        } else if (Operate.ENCRYPT.ordinal() ==op){
+        } else if (Operate.DENSITY ==op){
             return this.density(data);
         }else {
             return null;

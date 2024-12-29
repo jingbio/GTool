@@ -11,12 +11,12 @@
 </head>
 <body>
     <div class="container">
-        <div class="op">
-            <button class="op-button" th:each="op : ${ops}" th:text="${op.name}" th:value="${op.value}"/>
+        <div class="route">
+            <button class="route-button" th:each="route : ${routes}" th:text="${route.name}" th:value="${route.value}" onclick="route(this)"/>
         </div>
         <label for="in"></label><textarea placeholder="请输入内容" id="in" name="data"></textarea>
-        <div class="func">
-            <button th:each="func : ${funcs}" th:text="${func.name}" th:value="${func.op}" onclick="execute(this)"/>
+        <div class="func" id="ops">
+            <button th:each="op : ${ops}" th:text="${op.name}" th:value="${op.op}" onclick="execute(this)"/>
         </div>
     </div>
 </body>
