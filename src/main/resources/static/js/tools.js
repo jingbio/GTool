@@ -1,3 +1,4 @@
+const language = 'json';
 // after load
  window.onload = function () {
      //open wellcome
