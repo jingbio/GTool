@@ -1,9 +1,7 @@
 package com.jason.gtool.domain.type;
 
-import com.jason.gtool.handle.Base64;
+import com.jason.gtool.handle.*;
 import com.jason.gtool.domain.IStrategy;
-import com.jason.gtool.handle.JSON;
-import com.jason.gtool.handle.Unicode;
 import lombok.Getter;
 
 /**
@@ -14,6 +12,8 @@ import lombok.Getter;
 
 @Getter
 public enum RouteEnum {
+    SQL(new Sql()),
+    CASE(new Case()),
     UNICODE(new Unicode()),
     BASE64(new Base64()),
     JSON(new JSON());

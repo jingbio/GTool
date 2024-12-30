@@ -30,7 +30,9 @@ public class Route {
         return Arrays.asList(
             new Route("JSON校验", RouteEnum.JSON),
             new Route("Base64", RouteEnum.BASE64),
-            new Route("Unicode转码",RouteEnum.UNICODE)
+            new Route("Unicode转码",RouteEnum.UNICODE),
+            new Route("字母大小写",RouteEnum.CASE),
+            new Route("SQL美化",RouteEnum.SQL)
         );
     }
 }

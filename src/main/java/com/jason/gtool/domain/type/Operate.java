@@ -17,5 +17,12 @@ public enum Operate {
     // 转义
     ESCAPE,
     // 反转义
-    UNESCAPE;
+    UNESCAPE,
+    //转大写
+    CAPITAL,
+    //转小写
+    LOWER,
+    MYSQL,
+    ORACLE,
+    PGSQL;
 }

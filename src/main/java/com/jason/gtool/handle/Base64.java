@@ -4,8 +4,6 @@ import com.jason.gtool.domain.IStrategy;
 import com.jason.gtool.domain.type.Operate;
 import com.jason.gtool.domain.vo.Op;
 import com.jason.gtool.utils.Result;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,8 +13,6 @@ import java.util.List;
 *   @date 2024/12/26 15:15
 *   @desciption: base64操作
 */
-@Data
-@NoArgsConstructor
 public class Base64 implements IStrategy {
 
 
