@@ -26,25 +26,15 @@
     </div>
     <div class="footer">版权所有 &copy; 2024-2025 GTool 联系方式：<a href="https://gitee.com/jingwei129/gtool">Gitee</a></div>
     <script>
-        //初始化对象
         editor = ace.edit("code");
-
-        //设置风格和语言（更多风格和语言，请到github上相应目录查看）
         theme = "clouds"
         editor.setTheme("ace/theme/" + theme);
-
         editor.session.setMode("ace/mode/" + language);
-
-        //字体大小
         editor.setFontSize(16);
-
-        //设置只读（true时只读，用于展示代码）
         editor.setReadOnly(false);
-
-        //自动换行,设置为off关闭
         editor.setOption("wrap", "free");
         editor.setValue('', -1);
-        //启用提示菜单
+        editor.setShowPrintMargin(false);
         ace.require("ace/ext/language_tools");
         editor.setOptions({
             enableBasicAutocompletion: true,
