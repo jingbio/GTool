@@ -1,5 +1,4 @@
-//set language
-const language = 'json';
+let edit = true;
 // after load
  window.onload = function () {
      //open wellcome
@@ -21,8 +20,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
- function init(editor) {
-
+ function init(language) {
+     editor = ace.edit("code");
      //设置风格和语言（更多风格和语言，请到github上相应目录查看）
      theme = "clouds"
      editor.setTheme("ace/theme/" + theme);
@@ -37,7 +36,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
      //自动换行,设置为off关闭
      editor.setOption("wrap", "free");
-     editor.setValue('', -1);
+     if (edit) {
+         editor.setValue('', -1);
+     }
+     edit = false;
+     editor.setShowPrintMargin(false);
      //启用提示菜单
      ace.require("ace/ext/language_tools");
      editor.setOptions({
@@ -58,7 +61,7 @@ function route(route){
         contentType: 'application/json',
         success: function(response) {
             if (response.code === 200) {
-                updateOps(response.data);
+                updateOps(route.value, response.data);
             } else {
                 msg(response.msg, 0)
             }
@@ -69,7 +72,12 @@ function route(route){
     });
 }
 
-function updateOps(ops){
+function updateOps(op, ops){
+     if (op==='JSON') {
+         init('json');
+     }else {
+         init('sql');
+     }
     const container = document.getElementById('ops');
 
     // clear button
@@ -88,7 +96,7 @@ function updateOps(ops){
 }
 
 function execute (op){
-    const editor = ace.edit("code");;
+    const editor = ace.edit("code");
     const route = document.querySelector('.selected');
     let formData = {
         route: route.value,
@@ -104,7 +112,6 @@ function execute (op){
             if (response.code === 200) {
                 msg(response.msg, 1500);
                 editor.setValue(response.data, 1);
-                console.log(response.data);
             } else {
                 msg(response.msg, 0)
             }

@@ -26,21 +26,7 @@
     </div>
     <div class="footer">版权所有 &copy; 2024-2025 GTool 联系方式：<a href="https://gitee.com/jingwei129/gtool">Gitee</a></div>
     <script>
-        editor = ace.edit("code");
-        theme = "clouds"
-        editor.setTheme("ace/theme/" + theme);
-        editor.session.setMode("ace/mode/" + language);
-        editor.setFontSize(16);
-        editor.setReadOnly(false);
-        editor.setOption("wrap", "free");
-        editor.setValue('', -1);
-        editor.setShowPrintMargin(false);
-        ace.require("ace/ext/language_tools");
-        editor.setOptions({
-            enableBasicAutocompletion: true,
-            enableSnippets: true,
-            enableLiveAutocompletion: true
-        });
+        init('json')
     </script>
 </body>
 </html>
