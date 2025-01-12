@@ -1,6 +1,7 @@
 package com.jason.gtool.service;
 
 import com.jason.gtool.domain.req.GDoPram;
+import com.jason.gtool.domain.req.SharePram;
 import com.jason.gtool.domain.type.RouteEnum;
 import com.jason.gtool.utils.Result;
 
@@ -30,4 +31,11 @@ public interface IToolsService {
      * @return
      */
     Result getReouteOptions(RouteEnum param);
+
+    /**
+     * 分享
+     * @param param
+     * @return
+     */
+    Result share(SharePram param);
 }

@@ -1,11 +1,16 @@
 package com.jason.gtool.service.impl;
 
+import cn.hutool.core.util.IdUtil;
 import com.jason.gtool.domain.req.GDoPram;
+import com.jason.gtool.domain.req.SharePram;
 import com.jason.gtool.domain.type.RouteEnum;
 import com.jason.gtool.domain.vo.Op;
 import com.jason.gtool.domain.vo.Route;
 import com.jason.gtool.service.IToolsService;
 import com.jason.gtool.utils.Result;
+import com.jason.gtool.utils.ShareCache;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +21,10 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ToolsServiceImpl implements IToolsService {
-
+    @Value("${gtool.host}")
+    private String host;
+    @Autowired
+    private ShareCache shareCache;
     @Override
     public Result route(GDoPram param) {
         return param.getRoute().getStrategy().execute(param.getOp(), param.getData());
@@ -32,5 +40,12 @@ public class ToolsServiceImpl implements IToolsService {
     @Cacheable(cacheNames = "routeOptions", key = "#param")
     public Result getReouteOptions(RouteEnum param) {
         return Result.get(200, "success", Op.getOpsByRoute(param));
+    }
+
+    @Override
+    public Result share(SharePram param) {
+        String sid = IdUtil.fastSimpleUUID();
+        this.shareCache.set(sid, param);
+        return Result.get(200, "复制成功! 5 分钟后过期", host+"/share/"+sid);
     }
 }

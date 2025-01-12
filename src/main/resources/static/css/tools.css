@@ -86,3 +86,14 @@ body {
     text-align: center;
     z-index: 1; /* 确保 footer 不遮盖主要内容 */
 }
+
+/*share and copy*/
+.copy-btn {
+    margin-left: auto; /* 将按钮推到最右侧 */
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.copy-btn:hover {
+    background-color: limegreen;
+}

@@ -5,3 +5,6 @@ spring:
     cache: true
 server:
   port: 5010
+
+gtool:
+  host: alal.site

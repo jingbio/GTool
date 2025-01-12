@@ -1,0 +1,50 @@
+package com.jason.gtool.utils;
+
+import com.jason.gtool.domain.req.SharePram;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
+
+import java.util.concurrent.ConcurrentHashMap;
+
+@Component
+public class ShareCache {
+
+    private static ConcurrentHashMap<String, Long> cache = new ConcurrentHashMap<>();
+    @Cacheable(value = "shareCache", key = "#key")
+    public SharePram set(String key, SharePram param) {
+        cache.put(key, this.getTimeStampAfter5Minutes());
+        return param;
+    }
+    @Cacheable(value = "shareCache", key = "#key", unless = "#result == null")
+    public SharePram get(String key) {
+        //TODO
+        return null;
+    }
+    @CacheEvict(value = "shareCache", key = "#key")
+    public void del(String key) {
+        //TODO
+        cache.remove(key);
+    }
+
+    /**
+     * 清除过期缓存
+     */
+    @Scheduled(cron = "0/3 * * * * ?") //3秒执行一次
+    private void schdule () {
+        long now = System.currentTimeMillis();
+        cache.forEach((key, value) -> {
+            if (now > value) {
+                cache.remove(key);
+            }
+        });
+    }
+
+    /**
+     * @return 5分钟后的时间戳
+     */
+    private long getTimeStampAfter5Minutes() {
+        return System.currentTimeMillis()+ 2 * 60 * 1000;
+    }
+}

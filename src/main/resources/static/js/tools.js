@@ -23,7 +23,8 @@ document.addEventListener('DOMContentLoaded', function() {
  function init(language) {
      editor = ace.edit("code");
      //设置风格和语言（更多风格和语言，请到github上相应目录查看）
-     theme = "clouds"
+     //theme = "clouds"
+     theme = "chrome";
      editor.setTheme("ace/theme/" + theme);
 
      editor.session.setMode("ace/mode/" + language);
@@ -117,6 +118,41 @@ function execute (op){
             if (response.code === 200) {
                 msg(response.msg, 1500);
                 editor.setValue(response.data, 1);
+            } else {
+                msg(response.msg, 0)
+            }
+        },
+        error: function(error) {
+            msg(error.msg, 0)
+        },
+        complete: function() {
+            loading(false);
+        }
+    });
+}
+/*一键分享并复制*/
+function share (){
+    loading(true);
+    const editor = ace.edit("code");
+    const route = document.querySelector('.selected');
+    let formData = {
+        route: route.value,
+        data: editor.getValue()
+    };
+    $.ajax({
+        type: 'POST',
+        url: '/tools/share',
+        data: JSON.stringify(formData),
+        contentType: 'application/json',
+        success: function(response) {
+            if (response.code === 200) {
+                navigator.clipboard.writeText(response.data)
+                    .then(() => {
+                        msg(response.msg, 1500);
+                    })
+                    .catch(err => {
+                        msg(response.msg, 1500);
+                    });
             } else {
                 msg(response.msg, 0)
             }
