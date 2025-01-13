@@ -1,6 +1,8 @@
 package com.jason.gtool.controller;
 
+import com.jason.gtool.domain.req.SharePram;
 import com.jason.gtool.domain.type.RouteEnum;
+import com.jason.gtool.error.GToolException;
 import com.jason.gtool.service.IToolsService;
 import com.jason.gtool.utils.ShareCache;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +33,12 @@ public class IndexController {
     public String share(@PathVariable("sid") String sid, Model model) {
         model.addAttribute("routes", this.toolsService.getRoutes().getData());
         model.addAttribute("ops", this.toolsService.getReouteOptions(RouteEnum.JSON).getData());
+        SharePram share = this.shareCache.get(sid);
+        if (share == null) {
+            model.addAttribute("share", "分享链接已失效");
+            model.addAttribute("ro", "JSON");
+            return "tools";
+        }
         model.addAttribute("share", this.shareCache.get(sid).getData());
         model.addAttribute("ro", this.shareCache.get(sid).getRoute());
         return "tools";

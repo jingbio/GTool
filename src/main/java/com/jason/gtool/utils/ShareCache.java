@@ -1,8 +1,10 @@
 package com.jason.gtool.utils;
 
 import com.jason.gtool.domain.req.SharePram;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.context.ApplicationContext;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -10,6 +12,13 @@ import java.util.concurrent.ConcurrentHashMap;
 
 @Component
 public class ShareCache {
+    @Autowired
+    ApplicationContext applicationContext;
+
+    //在同一个类中调用方法，导致缓存不生效的问题及解决办法
+    ShareCache getProxy() {
+        return this.applicationContext.getBean(ShareCache.class);
+    }
 
     private static ConcurrentHashMap<String, Long> cache = new ConcurrentHashMap<>();
     @Cacheable(value = "shareCache", key = "#key")
@@ -36,7 +45,7 @@ public class ShareCache {
         long now = System.currentTimeMillis();
         cache.forEach((key, value) -> {
             if (now > value) {
-                cache.remove(key);
+                this.getProxy().del(key);
             }
         });
     }
@@ -45,6 +54,6 @@ public class ShareCache {
      * @return 5分钟后的时间戳
      */
     private long getTimeStampAfter5Minutes() {
-        return System.currentTimeMillis()+ 2 * 60 * 1000;
+        return System.currentTimeMillis()+ 15 * 60 * 1000;
     }
 }
