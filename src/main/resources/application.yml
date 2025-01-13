@@ -7,6 +7,6 @@ server:
   port: 5010
 
 gtool:
-  host: alal.site
+  host: a.alal.site
 #gtool:
 #  host: http://localhost:5010

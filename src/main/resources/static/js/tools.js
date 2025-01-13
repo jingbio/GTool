@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
      if (routeValue!==null||routeValue!=='') {
          const button = document.querySelector(`.route-button[value="${routeValue}"]`);
          button.classList.add('selected');
+         route(button);
      }
 }
 
