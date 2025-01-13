@@ -23,6 +23,7 @@
 ## 在线体验
 
 https://a.alal.site/
+部署地址：http://localhost:5010/
 
 > 欢迎使用该平台，让繁琐的操作变得简单！
 
