@@ -16,18 +16,21 @@
     <div class="container">
         <div class="route">
             <button class="route-button" th:each="route : ${routes}" th:text="${route.name}" th:value="${route.value}" onclick="route(this)"/>
-            <button class="copy-btn" onclick="share()">🔗一键分享</button>
+            <button class="share-btn" id="share-button" onclick="share()">🔗一键分享</button>
         </div>
         <pre id="code" class="ace_editor" style="min-height:80vh">
-            <label for="in"></label><textarea id="in" class="ace_text-input" th:if="${share != null}" th:text="${share.data}></textarea>
+            <label for="in"></label><textarea id="in" class="ace_text-input"></textarea>
         </pre>
         <div class="func" id="ops">
             <button th:each="op : ${ops}" th:text="${op.name}" th:value="${op.op}" onclick="execute(this)"/>
         </div>
     </div>
     <div class="footer">版权所有 &copy; 2024-2025 GTool 联系方式：<a href="https://gitee.com/jingwei129/gtool">Gitee</a></div>
+    <input type="hidden" id="sv" th:value="${share}" />
+    <input type="hidden" id="ro" th:value="${ro}" />
     <script>
-        init('json')
+        var sv = document.getElementById('sv').value
+        init('json', sv)
     </script>
 </body>
 </html>

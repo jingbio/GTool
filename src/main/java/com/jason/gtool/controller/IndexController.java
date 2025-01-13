@@ -31,7 +31,8 @@ public class IndexController {
     public String share(@PathVariable("sid") String sid, Model model) {
         model.addAttribute("routes", this.toolsService.getRoutes().getData());
         model.addAttribute("ops", this.toolsService.getReouteOptions(RouteEnum.JSON).getData());
-        model.addAttribute("share", this.shareCache.get(sid));
+        model.addAttribute("share", this.shareCache.get(sid).getData());
+        model.addAttribute("ro", this.shareCache.get(sid).getRoute());
         return "tools";
     }
 

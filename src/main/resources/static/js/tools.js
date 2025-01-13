@@ -8,8 +8,9 @@ let edit = true;
 
 //listen tbar
 document.addEventListener('DOMContentLoaded', function() {
+    const routeValue = document.getElementById('ro').value;
     const buttons = document.querySelectorAll('.route-button');
-    if (buttons.length > 0) {
+    if (buttons.length > 0 && (routeValue===null||routeValue==='')) {
         buttons[0].classList.add('selected');
     }
     buttons.forEach(button => {
@@ -18,9 +19,17 @@ document.addEventListener('DOMContentLoaded', function() {
             this.classList.add('selected');
         });
     });
+    selectedBtn(routeValue);
 });
 
- function init(language) {
+ function selectedBtn(routeValue) {
+     if (routeValue!==null||routeValue!=='') {
+         const button = document.querySelector(`.route-button[value="${routeValue}"]`);
+         button.classList.add('selected');
+     }
+}
+
+ function init(language, value) {
      editor = ace.edit("code");
      //设置风格和语言（更多风格和语言，请到github上相应目录查看）
      //theme = "clouds"
@@ -38,7 +47,11 @@ document.addEventListener('DOMContentLoaded', function() {
      //自动换行,设置为off关闭
      editor.setOption("wrap", "free");
      if (edit) {
-         editor.setValue('', -1);
+         if (value===null||value===''){
+             editor.setValue('', -1);
+         }else {
+             editor.setValue(value, -1);
+         }
      }
      edit = false;
      editor.setShowPrintMargin(false);
@@ -79,9 +92,9 @@ function route(route){
 
 function updateOps(op, ops){
      if (op==='JSON') {
-         init('json');
+         init('json',null);
      }else {
-         init('sql');
+         init('sql', null);
      }
     const container = document.getElementById('ops');
 
@@ -104,6 +117,7 @@ function execute (op){
      loading(true);
     const editor = ace.edit("code");
     const route = document.querySelector('.selected');
+    const sharebutton = document.querySelector('.share-btn');
     let formData = {
         route: route.value,
         op:op.value,
@@ -118,6 +132,7 @@ function execute (op){
             if (response.code === 200) {
                 msg(response.msg, 1500);
                 editor.setValue(response.data, 1);
+                sharebutton.style.display = 'inline-block';
             } else {
                 msg(response.msg, 0)
             }
@@ -165,4 +180,5 @@ function share (){
         }
     });
 }
+
 

@@ -8,3 +8,5 @@ server:
 
 gtool:
   host: alal.site
+#gtool:
+#  host: http://localhost:5010
