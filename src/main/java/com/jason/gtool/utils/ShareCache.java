@@ -15,7 +15,10 @@ public class ShareCache {
     @Autowired
     ApplicationContext applicationContext;
 
-    //在同一个类中调用方法，导致缓存不生效的问题及解决办法
+    /**
+     * solve same class not use cache problem
+     * @return
+     */
     ShareCache getProxy() {
         return this.applicationContext.getBean(ShareCache.class);
     }
@@ -39,7 +42,7 @@ public class ShareCache {
     }
 
     /**
-     * 清除过期缓存
+     * Clear expired cache. The error is within 3 seconds.
      */
     @Scheduled(cron = "0/3 * * * * ?") //3秒执行一次
     public void schdule () {
@@ -52,7 +55,7 @@ public class ShareCache {
     }
 
     /**
-     * @return 5分钟后的时间戳
+     * @return return timestamp after 5 minutes
      */
     private long getTimeStampAfter5Minutes() {
         return System.currentTimeMillis()+ 5 * 60 * 1000;

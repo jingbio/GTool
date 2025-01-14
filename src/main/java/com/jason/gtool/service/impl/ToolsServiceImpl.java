@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 /**
  * @author JingWei Guo
  * @date 2024/12/26 15:06
- * @desciption: 对于路由取缓存，避免了重复创建对象操作。
+ * @desciption: 对于固定的路由取缓存，避免了重复创建对象操作。
  */
 @Service
 public class ToolsServiceImpl implements IToolsService {
