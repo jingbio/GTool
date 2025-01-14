@@ -2,7 +2,6 @@ package com.jason.gtool.controller;
 
 import com.jason.gtool.domain.req.SharePram;
 import com.jason.gtool.domain.type.RouteEnum;
-import com.jason.gtool.error.GToolException;
 import com.jason.gtool.service.IToolsService;
 import com.jason.gtool.utils.ShareCache;
 import org.springframework.beans.factory.annotation.Autowired;

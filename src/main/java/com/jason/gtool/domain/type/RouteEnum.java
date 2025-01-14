@@ -2,7 +2,6 @@ package com.jason.gtool.domain.type;
 
 import com.jason.gtool.handle.*;
 import com.jason.gtool.domain.IStrategy;
-import lombok.Getter;
 
 /**
  * @author JingWei Guo
@@ -10,7 +9,6 @@ import lombok.Getter;
  * @desciption: 类型枚举类
  */
 
-@Getter
 public enum RouteEnum {
     UNIX(new UNIX()),
     SQL(new Sql()),
@@ -25,4 +23,7 @@ public enum RouteEnum {
         this.strategy = strategy;
     }
 
+    public IStrategy getStrategy() {
+        return strategy;
+    }
 }

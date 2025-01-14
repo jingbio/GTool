@@ -3,10 +3,6 @@ package com.jason.gtool.domain.vo;
 import com.jason.gtool.domain.type.Operate;
 import com.jason.gtool.domain.type.RouteEnum;
 import com.jason.gtool.handle.JSON;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,13 +12,41 @@ import java.util.stream.Collectors;
  * @date 2024/12/28 13:34
  * @desciption:
  */
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class Op {
     private String name;
     private Operate op;
+
+    public Op(String name, Operate op) {
+        this.name = name;
+        this.op = op;
+    }
+
+    public Op() {
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Operate getOp() {
+        return op;
+    }
+
+    public void setOp(Operate op) {
+        this.op = op;
+    }
+
+    @Override
+    public String toString() {
+        return "Op{" +
+                "name='" + name + '\'' +
+                ", op=" + op +
+                '}';
+    }
 
     /**
      * 根据路由获取操作列表用于显示在前端

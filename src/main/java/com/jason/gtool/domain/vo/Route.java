@@ -1,10 +1,6 @@
 package com.jason.gtool.domain.vo;
 
 import com.jason.gtool.domain.type.RouteEnum;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.Arrays;
 import java.util.List;
@@ -14,13 +10,31 @@ import java.util.List;
  * @date 2024/12/28 13:12
  * @desciption:
  */
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
+
 public class Route {
     private String name;
     private RouteEnum value;
+
+    public Route(String name, RouteEnum value) {
+        this.name = name;
+        this.value = value;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public RouteEnum getValue() {
+        return value;
+    }
+
+    public void setValue(RouteEnum value) {
+        this.value = value;
+    }
 
     /**
      * 获取所有路由
