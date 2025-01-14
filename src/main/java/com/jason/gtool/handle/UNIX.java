@@ -5,7 +5,7 @@ import cn.hutool.core.util.StrUtil;
 import com.jason.gtool.domain.IStrategy;
 import com.jason.gtool.domain.type.Operate;
 import com.jason.gtool.domain.vo.Op;
-import com.jason.gtool.utils.Result;
+import com.jason.gtool.common.utils.Result;
 
 import java.util.Arrays;
 import java.util.List;

@@ -4,7 +4,7 @@ import com.jason.gtool.domain.req.GDoPram;
 import com.jason.gtool.domain.req.RoutePram;
 import com.jason.gtool.domain.req.SharePram;
 import com.jason.gtool.service.IToolsService;
-import com.jason.gtool.utils.Result;
+import com.jason.gtool.common.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

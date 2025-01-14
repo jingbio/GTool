@@ -1,6 +1,6 @@
-package com.jason.gtool.error;
+package com.jason.gtool.common.error;
 
-import com.jason.gtool.utils.Result;
+import com.jason.gtool.common.utils.Result;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 

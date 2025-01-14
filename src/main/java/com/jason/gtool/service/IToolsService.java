@@ -3,7 +3,7 @@ package com.jason.gtool.service;
 import com.jason.gtool.domain.req.GDoPram;
 import com.jason.gtool.domain.req.SharePram;
 import com.jason.gtool.domain.type.RouteEnum;
-import com.jason.gtool.utils.Result;
+import com.jason.gtool.common.utils.Result;
 
 /**
  * @author JingWei Guo

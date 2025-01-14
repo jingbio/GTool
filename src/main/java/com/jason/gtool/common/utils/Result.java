@@ -1,4 +1,4 @@
-package com.jason.gtool.utils;
+package com.jason.gtool.common.utils;
 
 import java.io.Serializable;
 import java.util.Iterator;

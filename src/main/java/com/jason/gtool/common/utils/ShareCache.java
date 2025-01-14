@@ -1,4 +1,4 @@
-package com.jason.gtool.utils;
+package com.jason.gtool.common.utils;
 
 import com.jason.gtool.domain.req.SharePram;
 import org.springframework.beans.factory.annotation.Autowired;

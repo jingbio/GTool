@@ -3,7 +3,7 @@ package com.jason.gtool.controller;
 import com.jason.gtool.domain.req.SharePram;
 import com.jason.gtool.domain.type.RouteEnum;
 import com.jason.gtool.service.IToolsService;
-import com.jason.gtool.utils.ShareCache;
+import com.jason.gtool.common.utils.ShareCache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

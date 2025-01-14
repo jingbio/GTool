@@ -1,9 +1,8 @@
 package com.jason.gtool.domain;
 
 import com.jason.gtool.domain.type.Operate;
-import com.jason.gtool.domain.type.RouteEnum;
 import com.jason.gtool.domain.vo.Op;
-import com.jason.gtool.utils.Result;
+import com.jason.gtool.common.utils.Result;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.jason.gtool.utils;
+package com.jason.gtool.common.utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
