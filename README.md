@@ -34,6 +34,7 @@ https://a.alal.site/
 3. 结果将在页面下方实时展示。
 
 ## 技术支持
+本项目完全开源给开发者使用。喜欢点个 star ⭐
 
 如果您有任何问题或建议，请联系 [支持邮箱](mailto:guojingwei129@gmail.com)。
 
