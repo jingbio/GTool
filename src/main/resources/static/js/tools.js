@@ -12,6 +12,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const buttons = document.querySelectorAll('.route-button');
     if (buttons.length > 0 && (routeValue===null||routeValue==='')) {
         buttons[0].classList.add('selected');
+    } else {
+        const btns = document.querySelector(`.route-button[value="${routeValue}"]`);
+        btns[0].classList.add('selected');
+        route(btns[0]);
     }
     buttons.forEach(button => {
         button.addEventListener('click', function() {
@@ -19,16 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
             this.classList.add('selected');
         });
     });
-    selectedBtn(routeValue);
 });
-
- function selectedBtn(routeValue) {
-     if (routeValue!==null||routeValue!=='') {
-         const button = document.querySelector(`.route-button[value="${routeValue}"]`);
-         button.classList.add('selected');
-         route(button);
-     }
-}
 
  function init(language, value) {
      editor = ace.edit("code");
