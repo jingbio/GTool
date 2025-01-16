@@ -139,6 +139,7 @@ function execute (op){
 function share (){
     loading(true);
     const editor = ace.edit("code");
+    const sharebutton = document.querySelector('.share-btn');
     const route = document.querySelector('.selected');
     let formData = {
         route: route.value,
@@ -150,6 +151,7 @@ function share (){
         data: JSON.stringify(formData),
         contentType: 'application/json',
         success: function(response) {
+            sharebutton.style.display = 'none';
             if (response.code === 200) {
                 navigator.clipboard.writeText(response.data)
                     .then(() => {
