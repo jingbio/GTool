@@ -7,20 +7,30 @@ let edit = true;
  }
 
 //listen tbar
-document.addEventListener('DOMContentLoaded', function() {
-    const routeValue = document.getElementById('ro').value;
+document.addEventListener('DOMContentLoaded', function () {
+    const routeValue = document.getElementById('ro')?.value || ''; // 确保元素存在且有值
     const buttons = document.querySelectorAll('.route-button');
-    if (buttons.length > 0 && (routeValue===null||routeValue==='')) {
-        buttons[0].classList.add('selected');
-    } else {
-        const btns = document.querySelector(`.route-button[value="${routeValue}"]`);
-        btns[0].classList.add('selected');
-        route(btns[0]);
+
+    if (buttons.length > 0) {
+        if (!routeValue) {
+            // 如果 routeValue 为空，默认选中第一个按钮
+            buttons[0].classList.add('selected');
+        } else {
+            // 尝试找到与 routeValue 对应的按钮
+            const btn = Array.from(buttons).find(button => button.value === routeValue);
+            if (btn) {
+                btn.classList.add('selected');
+                route(btn); // 调用 route 函数
+            }
+        }
     }
+
+    // 为每个按钮绑定点击事件
     buttons.forEach(button => {
-        button.addEventListener('click', function() {
-            buttons.forEach(btn => btn.classList.remove('selected'));
-            this.classList.add('selected');
+        button.addEventListener('click', function () {
+            buttons.forEach(btn => btn.classList.remove('selected')); // 清除所有按钮的选中状态
+            this.classList.add('selected'); // 设置当前按钮为选中状态
+            route(this); // 调用 route 函数
         });
     });
 });
