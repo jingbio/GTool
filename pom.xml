@@ -63,12 +63,6 @@
                     <fork>true</fork>
                     <!--打包时，强制utf-8编码 -->
                     <jvmArguments>-Dfile.encoding=UTF-8</jvmArguments>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
                 </configuration>
             </plugin>
         </plugins>
