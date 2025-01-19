@@ -22,6 +22,12 @@ public enum Operate {
     CAPITAL,
     //转小写
     LOWER,
+    //下划线&空格转驼峰
+    CAMEL,
+    //驼峰转下划线
+    UNDERLINE,
+    //驼峰转空格
+    SPACE,
     //美化mysql
     MYSQL,
     //美化oracle
@@ -31,5 +37,11 @@ public enum Operate {
     //日期转时间戳
     TIMESTAMP,
     //时间戳转日期
-    DATE;
+    DATE,
+    //加密md5
+    EMD5,
+    //加密des
+    EDES,
+    //解密des
+    DDES;
 }
