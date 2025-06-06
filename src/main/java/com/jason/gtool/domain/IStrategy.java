@@ -12,6 +12,10 @@ import java.util.List;
  * @desciption:
  */
 public interface IStrategy {
+    /**
+     * 获取操作列表
+     * @return
+     */
     List<Op> getOps();
     /**
      * 策略执行方法
