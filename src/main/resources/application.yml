@@ -1,12 +1,33 @@
 spring:
+  ai:
+    model:
+      chat: openai
+    openai:
+      base-url: ${OPENAI_BASE_URL}
+      api-key: ${OPENAI_API_KEY}
+      chat:
+        options:
+          model: your-model
   application:
     name: GTool
   thymeleaf:
     cache: true
 server:
   port: 5010
-
-#gtool:
-#  host: https://a.alal.site
+  servlet:
+    context-path: /gtool
+#log config
+logging:
+  level:
+    com.jason: info
+    root: info
+  file:
+    name: ./logs/gtool.log
+  logback:
+    rollingpolicy:
+      clean-history-on-start: true
+      max-file-size: 120MB
+      #      max-history: 30
+      total-size-cap: 3GB
 gtool:
-  host: http://localhost:5010
+  host: http://localhost:5010/gtool
