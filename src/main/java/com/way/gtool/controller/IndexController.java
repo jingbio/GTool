@@ -35,17 +35,19 @@ public class IndexController {
     }
     @GetMapping("/share/{sid}")
     public String share(@PathVariable("sid") int sid, Model model) {
-        model.addAttribute("routes", this.toolsService.getRoutes().getData());
-        model.addAttribute("ops", this.toolsService.getReouteOptions(RouteEnum.JSON).getData());
-        SharePram share = this.shareCache.get(sid);
+        model.addAttribute("routes", toolsService.getRoutes().getData());
+        model.addAttribute("ops", toolsService.getReouteOptions(RouteEnum.JSON).getData());
+
+        SharePram share = shareCache.get(sid);
         if (share == null) {
             model.addAttribute("share", "分享链接已失效");
             model.addAttribute("ro", "JSON");
-            return "tools";
+        } else {
+            model.addAttribute("share", share.getData());
+            model.addAttribute("ro", share.getRoute());
+            shareCache.del(sid);
         }
-        model.addAttribute("share", this.shareCache.get(sid).getData());
-        model.addAttribute("ro", this.shareCache.get(sid).getRoute());
-        this.shareCache.del(sid);
+
         return "tools";
     }
 

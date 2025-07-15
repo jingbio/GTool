@@ -51,5 +51,7 @@ public enum Operate {
     //生成二维码
     ENQRCODE,
     //解码二维码
-    DEQRCODE;
+    DEQRCODE,
+    //文字转语音
+    TEXTTOVOICE;
 }

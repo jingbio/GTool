@@ -1,13 +1,12 @@
 package com.way.gtool.handle;
 
-import com.alibaba.druid.DbType;
-import com.alibaba.druid.sql.SQLUtils;
+import com.way.gtool.common.utils.SpringContextUtil;
 import com.way.gtool.domain.IStrategy;
 import com.way.gtool.domain.type.Operate;
 import com.way.gtool.domain.vo.Op;
 import com.way.gtool.common.utils.Result;
+import org.springframework.ai.chat.client.ChatClient;
 
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -16,16 +15,32 @@ import java.util.List;
  * @desciption: sql工具
  */
 public class Sql implements IStrategy {
+    private String prompt="你是一个SQL美化工具，按照要求美化SQL语句，不要有多余的回答。";
     private Result mysql(String data) {
-        return Result.get(200, "美化成功", SQLUtils.formatMySql(data));
+        SQL beauty = SpringContextUtil.getBean(ChatClient.Builder.class)
+            .defaultSystem(prompt).build()
+            .prompt()
+            .user("请将下面的mysql语句美化：" + data)
+            .call().entity(SQL.class);
+        return Result.get(200, "美化成功", beauty.sql);
     }
 
     private Result oracle(String data) {
-        return Result.get(200, "美化成功", SQLUtils.formatOracle(data));
+        SQL beauty = SpringContextUtil.getBean(ChatClient.Builder.class)
+            .defaultSystem(prompt).build()
+            .prompt()
+            .user("请将下面的oracle语句美化：" + data)
+            .call().entity(SQL.class);
+        return Result.get(200, "美化成功", beauty.sql);
     }
 
     private Result pgsql(String data) {
-        return Result.get(200, "美化成功", SQLUtils.format(data, DbType.postgresql));
+        SQL beauty = SpringContextUtil.getBean(ChatClient.Builder.class)
+            .defaultSystem(prompt).build()
+            .prompt()
+            .user("请将下面的postgresSQL语句美化：" + data)
+            .call().entity(SQL.class);
+        return Result.get(200, "美化成功", beauty.sql);
     }
     @Override
     public List<Op> getOps() {
@@ -40,12 +55,14 @@ public class Sql implements IStrategy {
     public Result execute(Operate op, String data) {
         if (Operate.MYSQL ==op) {
             return this.mysql(data);
-        } else if (Operate.ORACLE==op){
+        } else if (Operate.ORACLE==op) {
             return this.oracle(data);
-        } else if (Operate.PGSQL==op){
+        } else if (Operate.PGSQL==op) {
             return this.pgsql(data);
-        }else {
+        } else {
             return Result.get(500, "操作失败! 未实现的方法",null);
         }
     }
+
+    public static record SQL(String sql){};
 }
