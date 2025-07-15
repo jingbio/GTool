@@ -20,7 +20,7 @@ public class UNIX implements IStrategy {
      * @return
      */
     private Result timestamp(String data) {
-        long timestamp = DateUtil.parse(data).getTime() / 1000;
+        long timestamp = DateUtil.parse(data).getTime();
         return Result.get(200, "转换成功", StrUtil.toString(timestamp));
     }
     private Result date(String data) {

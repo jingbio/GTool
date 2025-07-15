@@ -10,6 +10,7 @@ import com.way.gtool.domain.IStrategy;
  */
 
 public enum RouteEnum {
+    TTL(new TTL()),
     QRCODE(new QrCode()),
     TRANSLATE(new Translate()),
     CRYPTION(new Cryption()),
