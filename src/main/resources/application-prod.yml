@@ -3,7 +3,7 @@ spring:
     model:
       chat: openai
     openai:
-      base-url: ${OPENAI_BASE_URL:http://i.alal.site/v1beta/openai}
+      base-url: ${OPENAI_BASE_URL:https://i.alal.site/v1beta/openai}
       api-key: ${OPENAI_API_KEY:}
       chat:
         options:
