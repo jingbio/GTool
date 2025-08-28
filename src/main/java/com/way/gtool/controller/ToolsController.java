@@ -17,8 +17,12 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/tools")
 public class ToolsController {
+    private final IToolsService toolsService;
+
     @Autowired
-    IToolsService toolsService;
+    public ToolsController(IToolsService toolsService) {
+        this.toolsService = toolsService;
+    }
     @PostMapping("/execute")
     public Result execute(@RequestBody GDoPram param) {
         return this.toolsService.route(param);
