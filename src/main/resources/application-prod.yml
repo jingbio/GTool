@@ -16,9 +16,9 @@ spring:
           base-url: ${OPENAI_SPEECH_URL:https://i.alal.site/v1beta/openai}
           api-key: ${OPENAI_SPEECH_KEY:}
           options:
-            model: ${OPENAI_SPEECH_MODEL:whisper-1}
-            voice: ${OPENAI_VOICE:alloy}
-            speed: ${OPENAI_SPEED:1.0}
+            model: ${OPENAI_SPEECH_MODEL:fnlp/MOSS-TTSD-v0.5}
+            voice: ${OPENAI_VOICE:fnlp/MOSS-TTSD-v0.5:alex}
+            speed: ${OPENAI_SPEED:1.0f}
   application:
     name: GTool
   thymeleaf:
