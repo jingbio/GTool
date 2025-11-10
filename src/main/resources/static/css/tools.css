@@ -84,13 +84,13 @@ body {
     width: 100vw;
     background-color: #f8f9fa;
     text-align: center;
-    z-index: 1; /* 确保 footer 不遮盖主要内容 */
+    z-index: 1;
 }
 
 /*share and copy*/
 .share-btn {
     display: none;
-    margin-left: auto; /* 将按钮推到最右侧 */
+    margin-left: auto;
     border-radius: 4px;
     transition: background-color 0.3s;
     opacity: 0.5;
@@ -102,7 +102,7 @@ body {
 
 .theme-btn {
     display: inline-block;
-    margin-left: auto; /* 将按钮推到最右侧 */
+    margin-left: auto;
     border-radius: 4px;
     transition: background-color 0.3s;
     opacity: 0.5;
