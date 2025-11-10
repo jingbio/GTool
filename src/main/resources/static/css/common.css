@@ -19,14 +19,11 @@
     100% { opacity: 0; transform: translate(-50%, -40%); }
 }
 
-/*加载g-load*/
-/* 旋转加载动画 */
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
 
-/* 包裹加载动画的容器 */
 .g-load-container {
     position: fixed;
     top: 50%;
